@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">EditableSpinner</string>
+    <string name="action_settings">Settings</string>
+
+    <string-array name="edits_array">
+        <item>您的出生地？</item>
+        <item>您父亲的名字？</item>
+        <item>您母亲的名字？</item>
+        <item>您的小学校名？</item>
+        <item>您小学班主任的名字？</item>
+        <item>自定义问题</item>
+    </string-array>
+
+</resources>
