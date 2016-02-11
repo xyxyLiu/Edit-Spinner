@@ -8,8 +8,6 @@ android {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion 22
         applicationId "com.reginald.editablespinner.sample"
-        minSdkVersion 9
-        targetSdkVersion 22
         versionCode 1
         versionName "1.0"
     }

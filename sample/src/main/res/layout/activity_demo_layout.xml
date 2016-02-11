@@ -2,29 +2,47 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Editable Spinner:"
-        android:textSize="30dp"
+        android:text="Editable Spinner"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="40dp"/>
 
     <com.reginald.editablespinner.EditableSpinner
-        android:id="@+id/editable_spinner"
+        android:id="@+id/editable_spinner_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:textSize="20dp"
-        android:padding="10dp"
+        android:hint="enter security question"
+        android:textColorHint="#aa828282"
+        android:textSize="18dp"
+        android:padding="8dp"
+        app:dropDownDrawable="@drawable/picker"
+        app:dropDownDrawableSpacing="15dp"
+        app:dropDownDrawableWidth="25dp"
+        app:dropDownDrawableHeight="25dp"
+        app:dropDownAnimStyle="@style/CustomPopupAnimation"
         />
 
+    <com.reginald.editablespinner.EditableSpinner
+        android:id="@+id/editable_spinner_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/custom_editor_bkg"
+        android:hint="enter custom text here"
+        android:textColorHint="#aa828282"
+        android:textSize="18dp"
+        android:padding="8dp"
+        />
 
-    <AutoCompleteTextView android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <EditText android:layout_width="match_parent" android:layout_height="wrap_content" />
 
 </LinearLayout>
