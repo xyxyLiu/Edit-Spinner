@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="EditableSpinner">
+    <declare-styleable name="EditSpinner">
         <attr name="dropDownDrawable" format="reference" />
         <attr name="dropDownDrawableWidth" format="dimension" />
         <attr name="dropDownDrawableHeight" format="dimension" />

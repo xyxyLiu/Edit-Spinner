@@ -1,4 +1,4 @@
-package com.reginald.editablespinner;
+package com.reginald.editspinner;
 
 import org.junit.Test;
 

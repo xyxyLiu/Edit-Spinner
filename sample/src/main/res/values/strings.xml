@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">EditableSpinner</string>
+    <string name="app_name">EditSpinner</string>
     <string name="action_settings">Settings</string>
 
     <string-array name="edits_array_1">

@@ -1,19 +1,19 @@
-# EditableSpinner
+# EditSpinner
 An EditText which supports spinner FOR `API LEVEL >= 11`
 
-<div><img src='https://github.com/xyxyLiu/EditableSpinner/blob/master/art/demo.gif' width="400px" style='border: #f1f1f1 solid 1px'/></div>
+<div><img src='https://github.com/xyxyLiu/EditSpinner/blob/master/art/demo.gif' width="400px" style='border: #f1f1f1 solid 1px'/></div>
 
 
 <br>
 <br>
-[Download Demo APK](https://github.com/xyxyLiu/EditableSpinner/releases/download/1.0/EditableSpinner-Demo-1.0.apk)
+[Download Demo APK](https://github.com/xyxyLiu/EditSpinner/releases/download/1.0/EditSpinner-Demo-1.0.apk)
 
 ## Usage
 
-* **add EditableSpinner in xml**
+* **add EditSpinner in xml**
 ```xml
-<com.reginald.editablespinner.EditableSpinner
-        android:id="@+id/editable_spinner"
+<com.reginald.editspinner.EditSpinner
+        android:id="@+id/edit_spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:dropDownDrawable="@drawable/spinner_icon"
@@ -25,10 +25,10 @@ An EditText which supports spinner FOR `API LEVEL >= 11`
 
 * **setup datas using Adapter**
 ```java
-        mEditableSpinner = (EditableSpinner) findViewById(R.id.editable_spinner);
+        mEditSpinner = (EditSpinner) findViewById(R.id.edit_spinner);
         ListAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item,
         getResources().getStringArray(R.array.your_string_array));
-        mEditableSpinner.setAdapter(adapter);
+        mEditSpinner.setAdapter(adapter);
 ```
 
 key properties:
@@ -53,51 +53,51 @@ android:editable="false"
 ```
 or set it dynamically:
 ```java
-mEditableSpinner.setEditable(false);
+mEditSpinner.setEditable(false);
 ```
 
 * **config dropdown window**
 
 ```java
         // set the dropdown drawable on the right of EditText and its size
-        mEditableSpinner.setDropDownDrawable(getResources().getDrawable(R.drawable.picker), 60, 60);
+        mEditSpinner.setDropDownDrawable(getResources().getDrawable(R.drawable.picker), 60, 60);
 
         // set the spacing bewteen Edited area and DropDown click area
-        mEditableSpinner.setDropDownDrawableSpacing(50);
+        mEditSpinner.setDropDownDrawableSpacing(50);
 
         // set DropDown popup window background
-        mEditableSpinner.setDropDownBackgroundResource(R.drawable.your_custom_dropdown_bkg);
+        mEditSpinner.setDropDownBackgroundResource(R.drawable.your_custom_dropdown_bkg);
 
         // set DropDown animation of the popup window
-        mEditableSpinner.setDropDownAnimationStyle(R.style.CustomPopupAnimation);
+        mEditSpinner.setDropDownAnimationStyle(R.style.CustomPopupAnimation);
 ```
 
 * **config listeners**
 
 ```java
         // triggered when dropdown popup window dismissed
-        mEditableSpinner.setOnDismissListener(new PopupWindow.OnDismissListener() {
+        mEditSpinner.setOnDismissListener(new PopupWindow.OnDismissListener() {
             @Override
             public void onDismiss() {
             }
         });
 
         // triggered when dropdown popup window shown
-        mEditableSpinner.setOnShowListener(new EditableSpinner.OnShowListener() {
+        mEditSpinner.setOnShowListener(new EditSpinner.OnShowListener() {
             @Override
             public void onShow() {
             }
         });
 
         // it converts the item in the list to a string shown in EditText.
-        mEditableSpinner.setItemConverter(new EditableSpinner.ItemConverter() {
+        mEditSpinner.setItemConverter(new EditSpinner.ItemConverter() {
             @Override
             public String convertItemToString(Object selectedItem) {
             }
         });
 
         // triggered when one item in the list is clicked
-        mEditableSpinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        mEditSpinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             }

@@ -1,4 +1,4 @@
-package com.reginald.editablespinner;
+package com.reginald.editspinner;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -24,15 +24,15 @@ import android.widget.ListPopupWindow;
 import android.widget.PopupWindow;
 
 /**
- * EditableSpinner
+ * EditSpinner
  * modified from {@link android.widget.AutoCompleteTextView}
  *
  * @author xyxyLiu <tonyreginald@gmail.com>
  */
-public class EditableSpinner extends EditText {
+public class EditSpinner extends EditText {
 
     private static final boolean DEBUG = BuildConfig.DEBUG_LOG;
-    private static final String TAG = "EditableSpinner";
+    private static final String TAG = "EditSpinner";
 
     private static final long TIMEOUT_POPUP_DISMISS = 200l;
 
@@ -57,43 +57,43 @@ public class EditableSpinner extends EditText {
     private boolean mIsEditable = true;
     private KeyListener mKeyListener;
 
-    public EditableSpinner(Context context) {
+    public EditSpinner(Context context) {
         super(context);
     }
 
-    public EditableSpinner(Context context, AttributeSet attrs) {
+    public EditSpinner(Context context, AttributeSet attrs) {
         super(context, attrs);
         initFromAttributes(context, attrs, 0);
     }
 
-    public EditableSpinner(Context context, AttributeSet attrs, int defStyleAttr) {
+    public EditSpinner(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initFromAttributes(context, attrs, defStyleAttr);
     }
 
     private void initFromAttributes(Context context, AttributeSet attrs, int defStyleAttr) {
-        final TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.EditableSpinner, defStyleAttr, 0);
+        final TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.EditSpinner, defStyleAttr, 0);
 
         mPopup = new ListPopupWindow(context, attrs);
         mPopup.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
         mPopup.setPromptPosition(ListPopupWindow.POSITION_PROMPT_BELOW);
 
-        Drawable selector = a.getDrawable(R.styleable.EditableSpinner_dropDownSelector);
+        Drawable selector = a.getDrawable(R.styleable.EditSpinner_dropDownSelector);
         if (selector != null) {
             mPopup.setListSelector(selector);
         }
 
-        int dropDownAnimStyleResId = a.getResourceId(R.styleable.EditableSpinner_dropDownAnimStyle, -1);
+        int dropDownAnimStyleResId = a.getResourceId(R.styleable.EditSpinner_dropDownAnimStyle, -1);
         if (dropDownAnimStyleResId > 0) {
             setDropDownAnimationStyle(dropDownAnimStyleResId);
         }
 
-        mDropDownDrawable = a.getDrawable(R.styleable.EditableSpinner_dropDownDrawable);
-        int dropDownDrawableSpacing = a.getDimensionPixelOffset(R.styleable.EditableSpinner_dropDownDrawableSpacing, 0);
+        mDropDownDrawable = a.getDrawable(R.styleable.EditSpinner_dropDownDrawable);
+        int dropDownDrawableSpacing = a.getDimensionPixelOffset(R.styleable.EditSpinner_dropDownDrawableSpacing, 0);
 
         if (mDropDownDrawable != null) {
-            int dropDownDrawableWidth = a.getDimensionPixelOffset(R.styleable.EditableSpinner_dropDownDrawableWidth, -1);
-            int dropDownDrawableHeight = a.getDimensionPixelOffset(R.styleable.EditableSpinner_dropDownDrawableHeight, -1);
+            int dropDownDrawableWidth = a.getDimensionPixelOffset(R.styleable.EditSpinner_dropDownDrawableWidth, -1);
+            int dropDownDrawableHeight = a.getDimensionPixelOffset(R.styleable.EditSpinner_dropDownDrawableHeight, -1);
             setDropDownDrawable(mDropDownDrawable, dropDownDrawableWidth, dropDownDrawableHeight);
             setDropDownDrawableSpacing(dropDownDrawableSpacing);
         }
@@ -102,15 +102,15 @@ public class EditableSpinner extends EditText {
         // view and store it in mDropDownAnchorView lazily in getDropDownAnchorView later.
         // Defaults to NO_ID, in which case the getDropDownAnchorView method will simply return
         // this TextView, as a default anchoring point.
-        mDropDownAnchorId = a.getResourceId(R.styleable.EditableSpinner_dropDownAnchor,
+        mDropDownAnchorId = a.getResourceId(R.styleable.EditSpinner_dropDownAnchor,
                 View.NO_ID);
 
 
         // For dropdown width, the developer can specify a specific width, or MATCH_PARENT
         // (for full screen width) or WRAP_CONTENT (to match the width of the anchored view).
-        mPopup.setWidth(a.getLayoutDimension(R.styleable.EditableSpinner_dropDownWidth,
+        mPopup.setWidth(a.getLayoutDimension(R.styleable.EditSpinner_dropDownWidth,
                 ViewGroup.LayoutParams.WRAP_CONTENT));
-        mPopup.setHeight(a.getLayoutDimension(R.styleable.EditableSpinner_dropDownHeight,
+        mPopup.setHeight(a.getLayoutDimension(R.styleable.EditSpinner_dropDownHeight,
                 ViewGroup.LayoutParams.WRAP_CONTENT));
 
         mPopup.setOnItemClickListener(new DropDownItemClickListener());

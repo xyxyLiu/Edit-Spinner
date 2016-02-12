@@ -1,4 +1,4 @@
-<manifest package="com.reginald.editablespinner"
+<manifest package="com.reginald.editspinner"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application android:allowBackup="true"

@@ -7,7 +7,7 @@ android {
     defaultConfig {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion 22
-        applicationId "com.reginald.editablespinner.sample"
+        applicationId "com.reginald.editspinner.sample"
         versionCode 1
         versionName "1.0"
     }

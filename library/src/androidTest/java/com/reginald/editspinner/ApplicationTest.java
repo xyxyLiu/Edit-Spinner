@@ -1,4 +1,4 @@
-package com.reginald.editablespinner;
+package com.reginald.editspinner;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
