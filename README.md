@@ -1,7 +1,7 @@
 # EditSpinner
 An EditText which supports spinner FOR `API LEVEL >= 11`
 
-<div><img src='https://github.com/xyxyLiu/EditSpinner/blob/master/art/demo.gif' width="400px" style='border: #f1f1f1 solid 1px'/></div>
+<div><img src='https://github.com/xyxyLiu/Edit-Spinner/blob/master/art/demo.gif' width="400px" style='border: #f1f1f1 solid 1px'/></div>
 
 
 <br>
