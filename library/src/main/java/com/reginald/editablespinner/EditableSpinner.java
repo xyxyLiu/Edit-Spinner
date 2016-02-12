@@ -9,6 +9,7 @@ import android.support.annotation.Nullable;
 import android.text.Editable;
 import android.text.Selection;
 import android.text.TextWatcher;
+import android.text.method.KeyListener;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -20,7 +21,6 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListPopupWindow;
-import android.widget.ListView;
 import android.widget.PopupWindow;
 
 /**
@@ -51,8 +51,11 @@ public class EditableSpinner extends EditText {
     private boolean mDropDownDismissedOnCompletion = true;
 
     private long mLastDismissTime = 0l;
-    private boolean mDropDownDrawableTouchedDown = false;
+    private boolean mDropDownTouchedDown = false;
     private boolean mOpenBefore;
+
+    private boolean mIsEditable = true;
+    private KeyListener mKeyListener;
 
     public EditableSpinner(Context context) {
         super(context);
@@ -122,8 +125,27 @@ public class EditableSpinner extends EditText {
         });
         a.recycle();
 
+        mIsEditable = getKeyListener() != null;
+
         setFocusable(true);
         addTextChangedListener(new MyWatcher());
+    }
+
+    /**
+     * set whether it can be edited
+     * @param isEditable
+     */
+    public void setEditable(boolean isEditable) {
+        if (mIsEditable == isEditable) return;
+        mIsEditable = isEditable;
+        if (isEditable) {
+            if (mKeyListener != null) {
+                setKeyListener(mKeyListener);
+            }
+        } else {
+            mKeyListener = getKeyListener();
+            setKeyListener(null);
+        }
     }
 
     public int getDropDownWidth() {
@@ -459,16 +481,16 @@ public class EditableSpinner extends EditText {
         }
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN: {
-                if (isPointInDropDownDrawable(event)) {
-                    mDropDownDrawableTouchedDown = true;
+                if (isInDropDownClickArea(event)) {
+                    mDropDownTouchedDown = true;
                     return true;
                 } else {
-                    mDropDownDrawableTouchedDown = false;
+                    mDropDownTouchedDown = false;
                 }
                 break;
             }
             case MotionEvent.ACTION_UP: {
-                if (mDropDownDrawableTouchedDown && isPointInDropDownDrawable(event)) {
+                if (mDropDownTouchedDown && isInDropDownClickArea(event)) {
                     if (SystemClock.elapsedRealtime() - mLastDismissTime > TIMEOUT_POPUP_DISMISS) {
                         clearFocus();
                         showDropDown();
@@ -483,17 +505,17 @@ public class EditableSpinner extends EditText {
         return super.onTouchEvent(event);
     }
 
-    private boolean isPointInDropDownDrawable(MotionEvent event) {
-        int drawableLeft = getWidth() - getCompoundPaddingRight();
-        int drawableRight = getWidth();
-        int drawableTop = 0;
-        int drawableBottom = getHeight();
+    private boolean isInDropDownClickArea(MotionEvent event) {
+        int areaLeft = mIsEditable ? getWidth() - getCompoundPaddingRight() : 0;
+        int areaRight = getWidth();
+        int areaTop = 0;
+        int areaBottom = getHeight();
 
         if (DEBUG) {
-            Log.d(TAG, String.format("x = %d, y = %d, drawableLeft = %d, drawableRight = %d, drawableTop = %d, drawableBottom = %d",
-                    (int) event.getX(), (int) event.getY(), drawableLeft, drawableRight, drawableTop, drawableBottom));
+            Log.d(TAG, String.format("x = %d, y = %d, areaLeft = %d, areaRight = %d, areaTop = %d, areaBottom = %d",
+                    (int) event.getX(), (int) event.getY(), areaLeft, areaRight, areaTop, areaBottom));
         }
-        if (event.getX() > drawableLeft && event.getX() < drawableRight && event.getY() > drawableTop && event.getY() < drawableBottom) {
+        if (event.getX() > areaLeft && event.getX() < areaRight && event.getY() > areaTop && event.getY() < areaBottom) {
             return true;
         } else {
             return false;
