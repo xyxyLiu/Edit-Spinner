@@ -8,6 +8,20 @@ An EditText which supports spinner FOR `API LEVEL >= 11`
 <br>
 [Download Demo APK](https://github.com/xyxyLiu/Edit-Spinner/releases/download/1.0/EditSpinner-Demo-1.0.apk)
 
+
+## Gradle Dependency
+```groovy
+repositories {
+    ...
+    jcenter()
+}
+
+dependencies {
+    compile 'com.reginald:editspinner:1.0.0'
+}
+````
+
+
 ## Usage
 
 * **add EditSpinner in xml**

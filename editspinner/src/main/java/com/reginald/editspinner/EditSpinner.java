@@ -27,7 +27,7 @@ import android.widget.PopupWindow;
  * EditSpinner
  * modified from {@link android.widget.AutoCompleteTextView}
  *
- * @author xyxyLiu <tonyreginald@gmail.com>
+ * @author xyxyLiu tonyreginald@gmail.com
  */
 public class EditSpinner extends EditText {
 
@@ -133,7 +133,7 @@ public class EditSpinner extends EditText {
 
     /**
      * set whether it can be edited
-     * @param isEditable
+     * @param isEditable isEditable
      */
     public void setEditable(boolean isEditable) {
         if (mIsEditable == isEditable) return;
@@ -157,7 +157,6 @@ public class EditSpinner extends EditText {
      * be a fixed width, or {@link ViewGroup.LayoutParams#MATCH_PARENT} to fill the screen, or
      * {@link ViewGroup.LayoutParams#WRAP_CONTENT} to fit the width of its anchor view.</p>
      * @param width the width to use
-     * @attr ref android.R.styleable#AutoCompleteTextView_dropDownWidth
      */
     public void setDropDownWidth(int width) {
         mPopup.setWidth(width);
@@ -173,7 +172,6 @@ public class EditSpinner extends EditText {
      * the screen, or {@link ViewGroup.LayoutParams#WRAP_CONTENT} to fit the height
      * of the drop down's content.</p>
      * @param height the height to use
-     * @attr ref android.R.styleable#AutoCompleteTextView_dropDownHeight
      */
     public void setDropDownHeight(int height) {
         mPopup.setHeight(height);
@@ -182,7 +180,6 @@ public class EditSpinner extends EditText {
     /**
      * <p>Returns the id for the view that the auto-complete drop down list is anchored to.</p>
      * @return the view's id, or {@link View#NO_ID} if none specified
-     * @attr ref android.R.styleable#AutoCompleteTextView_dropDownAnchor
      */
     public int getDropDownAnchor() {
         return mDropDownAnchorId;
@@ -193,7 +190,6 @@ public class EditSpinner extends EditText {
      * corresponding to this id will not be loaded until the next time it is needed to avoid
      * loading a view which is not yet instantiated.</p>
      * @param id the id to anchor the drop down list view to
-     * @attr ref android.R.styleable#AutoCompleteTextView_dropDownAnchor
      */
     public void setDropDownAnchor(int id) {
         mDropDownAnchorId = id;
@@ -207,7 +203,6 @@ public class EditSpinner extends EditText {
     /**
      * <p>Sets the background of the auto-complete drop-down list.</p>
      * @param d the drawable to set as the background
-     * @attr ref android.R.styleable#PopupWindow_popupBackground
      */
     public void setDropDownBackgroundDrawable(Drawable d) {
         mPopup.setBackgroundDrawable(d);
@@ -216,7 +211,6 @@ public class EditSpinner extends EditText {
     /**
      * <p>Sets the background of the auto-complete drop-down list.</p>
      * @param id the id of the drawable to set as the background
-     * @attr ref android.R.styleable#PopupWindow_popupBackground
      */
     public void setDropDownBackgroundResource(int id) {
         mPopup.setBackgroundDrawable(getContext().getResources().getDrawable(id));
@@ -229,7 +223,6 @@ public class EditSpinner extends EditText {
     /**
      * <p>Sets the vertical offset used for the auto-complete drop-down list.</p>
      * @param offset the vertical offset
-     * @attr ref android.R.styleable#ListPopupWindow_dropDownVerticalOffset
      */
     public void setDropDownVerticalOffset(int offset) {
         mPopup.setVerticalOffset(offset);
@@ -242,7 +235,6 @@ public class EditSpinner extends EditText {
     /**
      * <p>Sets the horizontal offset used for the auto-complete drop-down list.</p>
      * @param offset the horizontal offset
-     * @attr ref android.R.styleable#ListPopupWindow_dropDownHorizontalOffset
      */
     public void setDropDownHorizontalOffset(int offset) {
         mPopup.setHorizontalOffset(offset);
@@ -267,6 +259,7 @@ public class EditSpinner extends EditText {
 
     /**
      * Checks whether the drop-down is dismissed when a item is clicked.
+     * @return isDropDownDismissedOnCompletion
      */
     public boolean isDropDownDismissedOnCompletion() {
         return mDropDownDismissedOnCompletion;
