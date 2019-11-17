@@ -5,11 +5,15 @@ import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.PopupWindow;
+import android.widget.TextView;
 
 import com.reginald.editspinner.EditSpinner;
 
@@ -81,7 +85,39 @@ public class DemoActivity extends Activity {
         mEditSpinner2 = (EditSpinner) findViewById(R.id.edit_spinner_2);
         mEditSpinner2.setDropDownDrawable(getResources().getDrawable(R.drawable.spinner), 25, 25);
         mEditSpinner2.setDropDownDrawableSpacing(50);
-        mEditSpinner2.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, stringArray2));
+        mEditSpinner2.setAdapter(new BaseAdapter() {
+            @Override
+            public int getCount() {
+                return stringArray2.length;
+            }
+
+            @Override
+            public Object getItem(int position) {
+                return stringArray2[position];
+            }
+
+            @Override
+            public long getItemId(int position) {
+                return position;
+            }
+
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+                if (convertView == null) {
+                    convertView = View.inflate(DemoActivity.this, R.layout.layout_item, null);
+                }
+
+                ImageView icon = convertView.findViewById(R.id.item_icon);
+                TextView textView = convertView.findViewById(R.id.item_text);
+
+                String data = (String) getItem(position);
+
+                icon.setImageResource(R.mipmap.ic_launcher);
+                textView.setText(data);
+
+                return convertView;
+            }
+        });
 
         // it converts the item in the list to a string shown in EditText.
         mEditSpinner2.setItemConverter(new EditSpinner.ItemConverter() {
@@ -114,7 +150,7 @@ public class DemoActivity extends Activity {
         });
 
         // select the first item initially
-        mEditSpinner2.selectItem(0);
+        mEditSpinner2.selectItem(1);
     }
 
 

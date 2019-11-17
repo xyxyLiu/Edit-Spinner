@@ -1,11 +1,12 @@
 package com.reginald.editspinner;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.SystemClock;
-import android.support.annotation.Nullable;
 import android.text.Editable;
 import android.text.Selection;
 import android.text.TextWatcher;
@@ -58,21 +59,27 @@ public class EditSpinner extends EditText {
     private KeyListener mKeyListener;
 
     public EditSpinner(Context context) {
-        super(context);
+        super(context, null);
+        initFromAttributes(context, null, 0, 0);
     }
 
     public EditSpinner(Context context, AttributeSet attrs) {
         super(context, attrs);
-        initFromAttributes(context, attrs, 0);
+        initFromAttributes(context, attrs, 0, 0);
     }
 
     public EditSpinner(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-        initFromAttributes(context, attrs, defStyleAttr);
+        this(context, attrs, defStyleAttr, 0);
     }
 
-    private void initFromAttributes(Context context, AttributeSet attrs, int defStyleAttr) {
-        final TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.EditSpinner, defStyleAttr, 0);
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    public EditSpinner(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        super(context, attrs, defStyleAttr, defStyleRes);
+        initFromAttributes(context, attrs, defStyleAttr, defStyleRes);
+    }
+
+    private void initFromAttributes(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        final TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.EditSpinner, defStyleAttr, defStyleRes);
 
         mPopup = new ListPopupWindow(context, attrs);
         mPopup.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
@@ -129,6 +136,15 @@ public class EditSpinner extends EditText {
 
         setFocusable(true);
         addTextChangedListener(new MyWatcher());
+
+        Log.d(TAG, "mIsEditable = " + mIsEditable);
+    }
+
+    @Override
+    public boolean onCheckIsTextEditor() {
+        boolean isEdit =  super.onCheckIsTextEditor();
+        Log.d(TAG, "onCheckIsTextEditor = " + isEdit);
+        return isEdit;
     }
 
     /**
@@ -617,8 +633,7 @@ public class EditSpinner extends EditText {
     }
 
     @Override
-    public void setCompoundDrawables(@Nullable Drawable left, @Nullable Drawable top,
-            @Nullable Drawable right, @Nullable Drawable bottom) {
+    public void setCompoundDrawables(Drawable left, Drawable top, Drawable right, Drawable bottom) {
         super.setCompoundDrawables(left, top, mDropDownDrawable != null ? mDropDownDrawable : right, bottom);
     }
 

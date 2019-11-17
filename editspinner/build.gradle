@@ -6,9 +6,7 @@ android {
 
     defaultConfig {
         minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion 22
-        versionCode 1
-        versionName "1.0"
+        targetSdkVersion 28
 
         buildConfigField("boolean", "DEBUG_LOG", rootProject.ext.DEBUG_LOG)
     }
@@ -21,9 +19,7 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:22.2.1'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
 }
 
 apply from: '../gradle/bintray-push.gradle'

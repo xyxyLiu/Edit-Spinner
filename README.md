@@ -8,6 +8,8 @@ An EditText which supports spinner FOR `API LEVEL >= 11`
 <br>
 [Download Demo APK](https://github.com/xyxyLiu/Edit-Spinner/releases/download/1.0/EditSpinner-Demo-1.0.apk)
 
+<br>
+[ ![Download](https://api.bintray.com/packages/tonyreginald/maven/EditSpinner/images/download.svg) ](https://bintray.com/tonyreginald/maven/EditSpinner/_latestVersion)
 
 ## Gradle Dependency
 ```groovy
@@ -17,7 +19,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.reginald:editspinner:1.0.0'
+    implementation 'com.reginald:editspinner:1.1.0'
 }
 ````
 
@@ -120,7 +122,7 @@ mEditSpinner.setEditable(false);
 
 ## License
 
-    Copyright 2016 xyxyLiu
+    Copyright 2019 xyxyLiu
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
