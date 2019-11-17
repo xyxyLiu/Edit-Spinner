@@ -3,15 +3,14 @@ An EditText which supports spinner FOR `API LEVEL >= 11`
 
 <div><img src='https://github.com/xyxyLiu/Edit-Spinner/blob/master/art/demo.gif' width="400px" style='border: #f1f1f1 solid 1px'/></div>
 
-
 <br>
 <br>
 [Download Demo APK](https://github.com/xyxyLiu/Edit-Spinner/releases/download/1.0/EditSpinner-Demo-1.0.apk)
 
 <br>
-[ ![Download](https://api.bintray.com/packages/tonyreginald/maven/EditSpinner/images/download.svg) ](https://bintray.com/tonyreginald/maven/EditSpinner/_latestVersion)
 
 ## Gradle Dependency
+[ ![Download](https://api.bintray.com/packages/tonyreginald/maven/EditSpinner/images/download.svg) ](https://bintray.com/tonyreginald/maven/EditSpinner/_latestVersion)
 ```groovy
 repositories {
     ...
