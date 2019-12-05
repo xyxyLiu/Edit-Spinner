@@ -5,7 +5,7 @@ An EditText which supports spinner FOR `API LEVEL >= 11`
 
 <br>
 <br>
-[Download Demo APK](https://github.com/xyxyLiu/Edit-Spinner/releases/download/1.0/EditSpinner-Demo-1.0.apk)
+[Download Demo APK](https://github.com/xyxyLiu/Edit-Spinner/releases/download/1.1.0/EditSpinner-Demo-1.1.apk)
 
 <br>
 
